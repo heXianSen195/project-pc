@@ -15,6 +15,7 @@
             <el-col :span="14">
               <el-input v-model="form.code" placeholder="请输入验证码"></el-input>
             </el-col>
+            <!-- offset 控制盒子之间的间距的 -->
             <el-col :span="8" :offset="2">
               <el-button class="colbtn" :disabled="!!timer" @click="getCode">{{timer ? `${codeTime}s后获取`:'获取验证码'}}</el-button>
             </el-col>
@@ -38,8 +39,8 @@ export default {
       // 表单的参数
       form: {
         // 定义输入框
-        mobile: '13911111111',
-        code: '246810',
+        mobile: '',
+        code: '',
         read: false
       },
       // 给登录添加 加载 属性定义为false
@@ -140,7 +141,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eee;
+  background: url('../../assets/login_ed.jpg') no-repeat center;
+  background-size: 100%;
   .loginlogo {
     text-align: center;
     img {

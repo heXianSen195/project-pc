@@ -6,8 +6,8 @@
         <div class="userinfo">
           <el-dropdown :hide-on-click="false" trigger="click">
             <span class="el-dropdown-link">
-              <img class="icon" src="./avatar.jpg" alt />
-              <span class="name">群姐</span>
+              <img class="icon" :src="userInfo.photo" alt />
+              <span class="name">{{userInfo.name}}</span>
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
@@ -23,23 +23,34 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      userInfo: {}
+    }
+  },
+  created () {
+    // 通过JSON.parse把window.localStorage.getItem('userInfo')转换为对象
+    this.userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+  }
+}
 </script>
 
 <style lang='less' scoped>
-.userinfo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  .icon {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    text-align: center;
+.appheader {
+    line-height: 60px;
+  .el-dropdown-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    color: #409eff;
+    .icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      text-align: center;
+    }
   }
-}
-.el-dropdown-link {
-  cursor: pointer;
-  color: #409eff;
 }
 </style>

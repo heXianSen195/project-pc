@@ -8,8 +8,6 @@
       :unique-opened="true"
       default-active="2"
       class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
       background-color="#353b4e"
       text-color="#ccc"
       active-text-color="#ffd04b">
@@ -42,7 +40,7 @@
         </el-menu-item-group>
       </el-submenu>
       <el-menu-item index="4">
-        <i class="el-icon-menu"></i>
+        <i class="el-icon-user-solid"></i>
         <span slot="title">账户管理</span>
       </el-menu-item>
     </el-menu>
@@ -53,7 +51,7 @@
 export default {}
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 .logo {
   height: 60px;
   display: flex;

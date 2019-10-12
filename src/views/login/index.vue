@@ -31,9 +31,7 @@
         <el-form-item prop="read">
           <el-checkbox v-model="form.read"
                        name="type">
-            我已阅读并同意
-            <a href="#">用户协议</a>和
-            <a href="#">隐私条款</a>
+            我已阅读并同意<a href="#">用户协议</a>和<a href="#">隐私条款</a>
           </el-checkbox>
         </el-form-item>
         <el-button type="primary"
@@ -46,8 +44,6 @@
 </template>
 
 <script>
-// 导入 axios 第三方文件包
-import axios from 'axios'
 export default {
   data () {
     return {
@@ -66,12 +62,7 @@ export default {
           // 必填
           { required: true, message: '请输入手机号', trigger: 'blur' },
           // 限制长度
-          {
-            min: 11,
-            max: 11,
-            message: '长度在 11 到 11 个字符',
-            trigger: 'blur'
-          }
+          { min: 11, max: 11, message: '长度在 11 到 11 个字符', trigger: 'blur' }
         ],
         code: [
           { required: true, message: '请输入验证码', trigger: 'blur' },
@@ -105,8 +96,8 @@ export default {
       // 请求服务器时显示等待加载 true
       this.loginloading = true
       // 发送请求到服务器
-      axios({
-        url: 'http://ttapi.research.itcast.cn/mp/v1_0/authorizations',
+      this.$http({
+        url: '/authorizations',
         method: 'POST',
         data: this.form
       })

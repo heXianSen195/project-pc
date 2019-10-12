@@ -1,13 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import UseElement from './views/useElement'
+// 导入进度条第三包文件包
+import Nprogress from 'nprogress'
 // 导入login和home组件
 import Login from './views/login'
 import Home from './views/home'
 import Layout from './views/layout'
 import Publish from './views/publish'
+import List from '@/views/article/list'
 // 导入全局css
 import '@/views/style/scc.less'
+// 导入进度条css文件
+import '../node_modules/nprogress/nprogress.css'
 
 Vue.use(Router)
 
@@ -32,7 +37,8 @@ let router = new Router({
       children: [
         // 将 home 作为 layout 的子路由
         { path: '/home', component: Home },
-        { path: '/publish', component: Publish }
+        { path: '/publish', component: Publish },
+        { path: '/article/list', component: List }
       ]
     },
     // 测试页面
@@ -43,10 +49,14 @@ let router = new Router({
     }
   ]
 })
+// 导航守卫---给路由对象添加导航守卫：全局前置导航守卫
 // to: 要到达的路由
 // from: 发起跳转的路由
 // next: 函数, 是否后续代码
 router.beforeEach((to, from, next) => {
+  // 开启进度条
+  Nprogress.start()
+  // 判断是否在 login 页面
   if (to.path !== '/login') {
     // 得到 localStorage 中 userInfo 用户登录信息
     let userInfo = window.localStorage.getItem('userInfo')
@@ -62,6 +72,11 @@ router.beforeEach((to, from, next) => {
     // 执行后续代码
     next()
   }
+})
+// 导航守卫--后置钩子
+router.afterEach((to, from) => {
+  // 结束进度条
+  Nprogress.done()
 })
 
 export default router

@@ -15,6 +15,14 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 // 导入 json-bigint
 import JSONBig from 'json-bigint'
+// 导入富文本编辑框
+import VueQuillEditor from 'vue-quill-editor'
+// 导入富文本编辑框css文件
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+
+Vue.use(VueQuillEditor)
 
 // 设置axios基准地址
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'

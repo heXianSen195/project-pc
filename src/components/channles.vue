@@ -1,6 +1,8 @@
 <template>
-  <el-select v-model="ruleForm.channel_id">
-    <el-option v-for="(item, index) in channleList" :key="index" :label="item.name" :value="item.id"></el-option>
+  <!-- @change="optionChane" 子传父 -->
+  <el-select @change="optionChane" :value="mychannel">
+    <el-option v-for="(item, index) in channleList" :key="index" :label="item.name" :value="item.id">
+    </el-option>
   </el-select>
 </template>
 
@@ -8,20 +10,30 @@
 export default {
   data () {
     return {
+      // 数据源
       channleList: [],
-      ruleForm: ''
+      value: ''
     }
   },
+  // 子接受
+  props: ['mychannel'],
   methods: {
+    // 异步请求频道信息
     getChannlesList () {
       this.$http({
         url: '/channels',
         method: 'GET'
       }).then(res => {
-        console.log(res)
+        this.channleList = res.channels
       })
+    },
+    // 子传父方法
+    optionChane (value) {
+      // 将 value 交给父组件
+      this.$emit('tofather', value)
     }
   },
+  // 页面更新
   created () {
     this.getChannlesList()
   }

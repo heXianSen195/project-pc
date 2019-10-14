@@ -58,7 +58,7 @@
         </el-table-column>
         <el-table-column align="center" prop="date" label="操作">
           <template slot-scope="scope">
-            <el-button size="mini" round>
+            <el-button @click="update(scope.row)" size="mini" round>
               <i class="el-icon-edit"></i>修改</el-button>
             <!-- scope.row 获取数据源 -->
             <el-button size="mini" round @click="delArticle(scope.row)">
@@ -172,6 +172,9 @@ export default {
       }).then(res => {
         this.channelsList = res.channels
       })
+    },
+    update (row) {
+      this.$router.push(`/article/edit/${row.id}`)
     },
     // 筛选数据
     searchList () {

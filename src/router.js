@@ -38,7 +38,8 @@ let router = new Router({
         // 将 home 作为 layout 的子路由
         { path: '/home', component: Home },
         { path: '/article/publish', component: Publish },
-        { path: '/article/list', component: List }
+        { path: '/article/list', component: List },
+        { path: '/article/edit/:id', component: Publish }
       ]
     },
     // 测试页面

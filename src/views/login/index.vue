@@ -6,38 +6,27 @@
         <img src="./logo_index.png" />
       </div>
       <!-- el-form是表单域 -->
-      <el-form ref="form"
-               :model="form"
-               :rules="rules">
+      <el-form ref="form" :model="form" :rules="rules">
         <el-form-item prop="mobile">
-          <el-input v-model="form.mobile"
-                    placeholder="请输入手机号"></el-input>
+          <el-input v-model="form.mobile" placeholder="请输入手机号"></el-input>
         </el-form-item>
         <el-form-item prop="code">
           <el-row>
             <el-col :span="14">
-              <el-input v-model="form.code"
-                        placeholder="请输入验证码"></el-input>
+              <el-input v-model="form.code" placeholder="请输入验证码"></el-input>
             </el-col>
             <!-- offset 控制盒子之间的间距的 -->
-            <el-col :span="8"
-                    :offset="2">
-              <el-button class="colbtn"
-                         :disabled="!!timer"
-                         @click="getCode">{{timer ? `${codeTime}s后获取`:'获取验证码'}}</el-button>
+            <el-col :span="8" :offset="2">
+              <el-button class="colbtn" :disabled="!!timer" @click="getCode">{{timer ? `${codeTime}s后获取`:'获取验证码'}}</el-button>
             </el-col>
           </el-row>
         </el-form-item>
         <el-form-item prop="read">
-          <el-checkbox v-model="form.read"
-                       name="type">
+          <el-checkbox v-model="form.read" name="type">
             我已阅读并同意<a href="#">用户协议</a>和<a href="#">隐私条款</a>
           </el-checkbox>
         </el-form-item>
-        <el-button type="primary"
-                   :loading="loginloading"
-                   @click="login"
-                   class="login-btn">登录</el-button>
+        <el-button type="primary" :loading="loginloading" @click="login" class="login-btn">登录</el-button>
       </el-form>
     </div>
   </div>
@@ -105,7 +94,7 @@ export default {
           console.log(res)
           // res 中有一个属性叫做 data, 在 data 中有两个属性后面我们会用上： token , refresh_token
           // 获取用户信息
-          let userInfo = res.data.data
+          let userInfo = res
           // 将用户信息保存到localStorage 中
           // 通过 JSON.stringify 把 userInfo 用户信息转成 字符串
           window.localStorage.setItem('userInfo', JSON.stringify(userInfo))

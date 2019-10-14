@@ -7,7 +7,7 @@ import Nprogress from 'nprogress'
 import Login from './views/login'
 import Home from './views/home'
 import Layout from './views/layout'
-import Publish from './views/publish'
+import Publish from './views/article/publish'
 import List from '@/views/article/list'
 // 导入全局css
 import '@/views/style/scc.less'
@@ -37,7 +37,7 @@ let router = new Router({
       children: [
         // 将 home 作为 layout 的子路由
         { path: '/home', component: Home },
-        { path: '/publish', component: Publish },
+        { path: '/article/publish', component: Publish },
         { path: '/article/list', component: List }
       ]
     },

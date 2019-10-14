@@ -13,7 +13,7 @@
           <i class="el-icon-location"></i>
           <span>内容管理</span>
         </template>
-        <el-menu-item index="/publish">
+        <el-menu-item index="/article/publish">
           <span slot="title">发布文章</span>
         </el-menu-item>
         <el-menu-item index="/article/list">

@@ -19,10 +19,10 @@
         <el-menu-item index="/article/list">
           <span slot="title">内容列表</span>
         </el-menu-item>
-        <el-menu-item index="2-3">
+        <el-menu-item index="/comment">
           <span slot="title">评论列表</span>
         </el-menu-item>
-        <el-menu-item index="2-4">
+        <el-menu-item index="/material">
           <span slot="title">素材管理</span>
         </el-menu-item>
       </el-submenu>

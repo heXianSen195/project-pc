@@ -9,6 +9,8 @@ import Home from './views/home'
 import Layout from './views/layout'
 import Publish from './views/article/publish'
 import List from '@/views/article/list'
+import Comment from './views/comment'
+import Material from './views/material'
 // 导入全局css
 import '@/views/style/scc.less'
 // 导入进度条css文件
@@ -37,9 +39,16 @@ let router = new Router({
       children: [
         // 将 home 作为 layout 的子路由
         { path: '/home', component: Home },
+        // publish 路由
         { path: '/article/publish', component: Publish },
+        // list 路由
         { path: '/article/list', component: List },
-        { path: '/article/edit/:id', component: Publish }
+        // 修改文章的路由
+        { path: '/article/edit/:id', component: Publish },
+        // 评论的子路由
+        { path: '/comment', component: Comment },
+        // 图片管理子路由
+        { path: '/material', component: Material }
       ]
     },
     // 测试页面

@@ -2,15 +2,11 @@
   <div class="appheader">
     <el-row>
       <el-col :span="14">江苏传智播客教育科技股份有限公司</el-col>
-      <el-col :offset="7"
-              :span="3">
+      <el-col :offset="7" :span="3">
         <div class="userinfo">
-          <el-dropdown :hide-on-click="false"
-                       trigger="click">
+          <el-dropdown :hide-on-click="false" trigger="click">
             <span class="el-dropdown-link">
-              <img class="icon"
-                   :src="userInfo.photo"
-                   alt />
+              <img class="icon" :src="userInfo.photo" alt />
               <span class="name">{{userInfo.name}}</span>
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
@@ -37,7 +33,9 @@ export default {
   },
   created () {
     // 通过JSON.parse把window.localStorage.getItem('userInfo')转换为对象
-    this.userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+    // this.userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+    // 从 vuex 中取出 userInfo
+    this.userInfo = this.$store.state.userString
   }
 }
 </script>

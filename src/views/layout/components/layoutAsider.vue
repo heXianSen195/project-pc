@@ -46,7 +46,7 @@
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-menu-item index="4">
+      <el-menu-item index="/User">
         <i class="el-icon-user-solid"></i>
         <span slot="title">账户管理</span>
       </el-menu-item>

@@ -19,7 +19,7 @@
     </div>
     <!-- 布局内容 -->
     <el-row :gutter="20" class="box-top">
-      <el-col :span="6" v-for="(item,index) in matericalList" :key="index">
+      <el-col :span="6" v-for="(item,index) in matericalList" :key="index" :preview-src-list="imageUrl">
         <el-card class="mycard">
           <!-- 图片 -->
           <img class="myimg" :src="item.url" alt="">
@@ -41,7 +41,7 @@
       </el-col>
     </el-row>
     <!-- 分页 -->
-    <el-pagination @current-change="pageChange" @prev-click="prevClick" @next-click="nextClick" background layout="prev, pager, next" :total="total_count">
+    <el-pagination :page-size="10" @current-change="pageChange" @prev-click="prevClick" @next-click="nextClick" background layout="prev, pager, next" :total="total_count">
     </el-pagination>
     <!-- 隐藏与显示面板 -->
     <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
@@ -72,7 +72,7 @@ export default {
       // 默认第一页
       page: 1,
       // 默认每页图片数
-      per_page: 20,
+      per_page: 10,
       // 图片总数
       total_count: 0,
       // 定义上传图片
@@ -125,13 +125,15 @@ export default {
           message: res.collect ? '收藏成功' : '取消收藏',
           type: 'success'
         })
+        // 更新数据
+        this.changeAll(this.myradio)
       })
       // 更新数据
-      if (this.myradio === '全部') {
-        this.getMatericalList(false)
-      } else {
-        this.getMatericalList(true)
-      }
+      // if (this.myradio === '全部') {
+      //   this.getMatericalList(false)
+      // } else {
+      //   this.getMatericalList(true)
+      // }
     },
     // 删除方法
     delMat (id) {
@@ -145,13 +147,15 @@ export default {
           message: '删除成功',
           type: 'success'
         })
+        // 更新数据
+        this.changeAll(this.myradio)
       })
       // 更新数据
-      if (this.myradio === '全部') {
-        this.getMatericalList(false)
-      } else {
-        this.getMatericalList(true)
-      }
+      // if (this.myradio === '全部') {
+      //   this.getMatericalList(false)
+      // } else {
+      //   this.getMatericalList(true)
+      // }
     },
     // 上一页
     prevClick () {
@@ -166,7 +170,7 @@ export default {
     // 点击触发翻页事件
     pageChange (id) {
       this.page = id
-      this.getMatericalList()
+      this.getMatericalList(false)
     },
     // 面板显示
     uploadMat () {

@@ -97,7 +97,8 @@ export default {
           let userInfo = res
           // 将用户信息保存到localStorage 中
           // 通过 JSON.stringify 把 userInfo 用户信息转成 字符串
-          window.localStorage.setItem('userInfo', JSON.stringify(userInfo))
+          // window.localStorage.setItem('userInfo', JSON.stringify(userInfo))
+          this.$store.commit('setUserInfo', userInfo)
           // 只要进入到这个方法中说明登录成功
           // 请求服务器成功返回为 false
           this.loginloading = false

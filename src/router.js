@@ -11,6 +11,7 @@ import Publish from './views/article/publish'
 import List from '@/views/article/list'
 import Comment from './views/comment'
 import Material from './views/material'
+import User from './views/user'
 // 导入全局css
 import '@/views/style/scc.less'
 // 导入进度条css文件
@@ -48,7 +49,9 @@ let router = new Router({
         // 评论的子路由
         { path: '/comment', component: Comment },
         // 图片管理子路由
-        { path: '/material', component: Material }
+        { path: '/material', component: Material },
+        // 账户管理路由
+        { path: '/user', component: User }
       ]
     },
     // 测试页面
